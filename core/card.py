@@ -49,18 +49,23 @@ class Card:
             f")"
         )
 
+    def to_dict(self) -> dict:
+        return {
+            "sentence": self.sentence,
+            "highlight_start": self.highlight_start,
+            "highlight_end": self.highlight_end,
+            "options": self.options,
+            "correct_index": self.correct_index,
+            "tags": self.tags,
+        }
 
-card = Card(
-    "Define a variable to store the user's name.",
-    0,
-    6,
-    [
-        "викликати (функцію)",
-        "повертати (значення)",
-        "визначити / оголосити",
-        "реалізувати / впровадити",
-    ],
-    2,
-)
-
-print(card)
+    @classmethod
+    def from_dict(cls, data: dict) -> "Card":
+        return cls(
+            sentence=data["sentence"],
+            highlight_start=data["highlight_start"],
+            highlight_end=data["highlight_end"],
+            options=data["options"],
+            correct_index=data["correct_index"],
+            tags=data.get("tags", []),
+        )
