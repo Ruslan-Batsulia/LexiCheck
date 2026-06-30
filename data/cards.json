@@ -1,0 +1,30 @@
+{
+  "cards": [
+    {
+      "sentence": "Define a variable to store the user's name.",
+      "highlight_start": 0,
+      "highlight_end": 6,
+      "options": [
+        "викликати (функцію)",
+        "повертати (значення)",
+        "визначити / оголосити",
+        "реалізувати / впровадити"
+      ],
+      "correct_index": 2,
+      "tags": []
+    },
+    {
+      "sentence": "Implement the function that returns the sum.",
+      "highlight_start": 0,
+      "highlight_end": 9,
+      "options": [
+        "фрагмент коду",
+        "помилка в коді / баг",
+        "застарілий / не рекомендований",
+        "реалізувати / впровадити"
+      ],
+      "correct_index": 3,
+      "tags": []
+    }
+  ]
+}
