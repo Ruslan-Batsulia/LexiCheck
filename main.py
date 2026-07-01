@@ -15,42 +15,48 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 
+import pyglet
 from pathlib import Path
 from core.deck import Deck
 from core.card import Card
 from core.session import Session
+from ui.main_window import MainWindow
 
 
-def show_skill_check(card: Card):
-    print("\n--- SKILL CHECK ---")
-    print(card.sentence)
-    print(f"Виділено: {card.get_highlighted_text()}")
-    print("Варіанти:")
-    for i, option in enumerate(card.options):
-        print(f"  {i}: {option}")
+# def show_skill_check(card: Card):
+#     print("\n--- SKILL CHECK ---")
+#     print(card.sentence)
+#     print(f"Виділено: {card.get_highlighted_text()}")
+#     print("Варіанти:")
+#     for i, option in enumerate(card.options):
+#         print(f"  {i}: {option}")
 
 
 def main():
     deck = Deck()
     deck.load_from_file(Path("data/cards.json"))
-    print(f"Завантажено карток: {len(deck.cards)}")
 
-    session = Session(deck, duration=10)
-    session.on_skill_check = show_skill_check
-    session.start()
+    window = MainWindow(deck)
+    pyglet.app.run()
 
-    print("\nПочинаємо симуляцію...")
+    # print(f"Завантажено карток: {len(deck.cards)}")
 
-    for _ in range(3):
-        session.tick(5.0)
-        print(
-            f"Час: {session.elapsed_time:.1f}, "
-            f"прогрес: {session.progress}, "
-            f"активна: {session.is_running}"
-        )
+    # session = Session(deck, duration=10)
+    # session.on_skill_check = show_skill_check
+    # session.start()
 
-    print(f"\nПравильних: {session.correct_answers}")
-    print(f"Неправильних: {session.wrong_answers}")
+    # print("\nПочинаємо симуляцію...")
+
+    # for _ in range(3):
+    #     session.tick(5.0)
+    #     print(
+    #         f"Час: {session.elapsed_time:.1f}, "
+    #         f"прогрес: {session.progress}, "
+    #         f"активна: {session.is_running}"
+    #     )
+
+    # print(f"\nПравильних: {session.correct_answers}")
+    # print(f"Неправильних: {session.wrong_answers}")
 
     # deck.add_card(Card(
     #     "Define a variable to store the user's name.",
